@@ -1,10 +1,15 @@
 import React from 'react';
-import { Provider, useDispatch } from 'react-redux';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { Provider, useDispatch } from 'react-redux';
+import {
+  createBrowserRouter,
+  RouterProvider
+} from "react-router-dom";
 import App from './App';
+import MovieDetails from './components/movieDetails/movieDetails';
+import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { store } from './store/root'
+import { store } from './store/root';
 
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
@@ -13,10 +18,21 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "movieDetails/:movieType/:movieId",
+    element: <MovieDetails />,
+  },
+]);
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );

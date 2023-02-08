@@ -8,6 +8,9 @@ export const httpClient = axios.create({
 
 export class DataApi {
   static getAllData(): Promise<AxiosResponse<GetAllDataResponse>['data']> {
-    return httpClient.get(EndpointMap.GetAll);
+    return httpClient.get(EndpointMap.GetAll + EndpointMap.EndPhrase);
+  }
+  static getSelectedMovieData({ movieId, movieType }: { movieId: string, movieType: string}): Promise<AxiosResponse<GetAllDataResponse>['data']> {
+    return httpClient.get(EndpointMap.GetMovieData + `/${movieType}/${movieId}?` + EndpointMap.EndPhrase);
   }
 }

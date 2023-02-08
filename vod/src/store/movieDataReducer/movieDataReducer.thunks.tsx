@@ -11,3 +11,14 @@ export const getAllData = createAsyncThunk(
     }
   },
 );
+
+export const getSelectedMovieData = createAsyncThunk(
+  'getSelectedMovieData',
+  async (payload: { movieId: string, movieType: string }, { rejectWithValue }) => {
+    try {
+      return await DataApi.getSelectedMovieData({ movieId: payload.movieId, movieType: payload.movieType });
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+);

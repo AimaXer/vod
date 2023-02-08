@@ -1,35 +1,21 @@
-import React, { useCallback } from 'react'
 import { useSelector } from 'react-redux';
 import { getAllDataSelector } from '../../store/movieDataReducer/movieDataReducer.selectors';
-import { MovieData, SectionData } from '../../store/movieDataReducer/types';
+import { SectionData } from '../../store/movieDataReducer/types';
+import "./mainPage.css";
+import MovieList from './movieList';
 
 const MainPage = () => {
   const data = useSelector(getAllDataSelector);
-  console.log(data)
-  const renderItem = useCallback(
-    (movieData: MovieData) => {
-      return <li>{movieData.item.title}</li>
-    },
-    [],
-  )
-  
-  const renderList = useCallback(
-    (category: SectionData) => {
-      return (
-        <div>
-          <div>
-            {category.title}  
-          </div>          
-          {category.elements.map((movieData: MovieData) => renderItem(movieData))}
-        </div>
-      )
-    },
-    [],
-  )
-  
+
   return (
     <div>
-      {data.map((category: SectionData) => renderList(category))}
+      <div className='site_title'>TestFlix</div>
+      {data.map((category: SectionData) => {
+        if (category.elements.length === 0) {
+          return null;
+        }
+        return <MovieList category={category} />
+      })}
     </div>
   )
 }
