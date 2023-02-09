@@ -32,6 +32,7 @@ const router = createBrowserRouter([
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <script src="//r.dcs.redcdn.pl/file/o2/web/player/redcdn/2.33.0/js/redgalaxy-player-2.33.0.min.js" type="text/javascript"></script>
       <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>

@@ -3,7 +3,8 @@ export const API_URL = '';
 export enum EndpointMap {
   GetAll = '/api/products/sections/main?elementsLimit=10&',
   GetMovieData = '/api/products',
-  EndPhrase = 'lang=POL&platform=BROWSER'
+  EndPhrase = 'lang=POL&platform=BROWSER',
+  TrailerEndPhrase = 'videos/playlist?videoType=TRAILER&platform=BROWSER',
 }
 
 export enum RequestId {

@@ -13,4 +13,8 @@ export class DataApi {
   static getSelectedMovieData({ movieId, movieType }: { movieId: string, movieType: string}): Promise<AxiosResponse<GetAllDataResponse>['data']> {
     return httpClient.get(EndpointMap.GetMovieData + `/${movieType}/${movieId}?` + EndpointMap.EndPhrase);
   }
+  static getTrailerData({ movieId }: { movieId: string }): Promise<AxiosResponse<GetAllDataResponse>['data']> {
+    console.log(EndpointMap.GetMovieData + `/${movieId}/` + EndpointMap.TrailerEndPhrase)
+    return httpClient.get(EndpointMap.GetMovieData + `/${movieId}/` + EndpointMap.TrailerEndPhrase);
+  }
 }
