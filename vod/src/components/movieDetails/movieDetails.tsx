@@ -43,7 +43,6 @@ const MovieDetails = () => {
         const player = new window.redGalaxy.Player("player").setup({
           file: {
             dash: response.data.sources.DASH[0].src,
-            ss: response.data.sources.SS[0].src,
             hls: response.data.sources.HLS[0].src
           },
           drm: {
